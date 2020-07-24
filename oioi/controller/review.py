@@ -29,16 +29,14 @@ def create_store_review(store_id, content, score, reviewer):
         return abort(500, "database error")
 
 
-def create_product_review(store_id, name, content, score, picture, reviewer):
+def create_product_review(store_id, name, content, score, reviewer):
 
     try:
         store = session.query(Store).filter(Store.id == store_id).first()
 
         if store:
-            picture_location = '/static/' + str(picture.filename)
-            picture.save(picture_location)
 
-            add_review = ProductReview(store_id=store_id, name=name, content=content, picture=picture_location,
+            add_review = ProductReview(store_id=store_id, name=name, content=content,
                                        score=score, reviewer=reviewer)
 
             session.add(add_review)

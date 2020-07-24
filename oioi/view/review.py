@@ -28,7 +28,6 @@ class ProductReview(Resource):
         name = request.json['name']
         content = request.json['content']
         score = request.json['score']
-        picture = request.files['picture']
         reviewer = get_jwt_identity()
 
-        return create_product_review(store_id, name, content, score, picture, reviewer)
+        return create_product_review(store_id, name, content, score, reviewer)

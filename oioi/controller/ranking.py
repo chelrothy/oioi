@@ -34,4 +34,5 @@ def ranking(search):
             abort(400, "none data")
 
     except SQLAlchemyError:
+        session.rollback()
         abort(500, "database error")

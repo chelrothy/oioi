@@ -31,6 +31,7 @@ def create_store_review(store_id, content, score, reviewer):
             abort(400, "bad request")
 
     except SQLAlchemyError:
+        session.rollback()
         return abort(500, "database error")
 
 
@@ -49,4 +50,5 @@ def create_product_review(product_id, content, score, reviewer):
         }, 201
 
     except SQLAlchemyError:
+        session.rollback()
         return abort(500, "database error")

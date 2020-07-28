@@ -20,6 +20,7 @@ def enrollment_store(store_name, description, score, average_price, picture_url)
         }
 
     except SQLAlchemyError:
+        session.rollback()
         return abort(500, "database_error")
 
 
@@ -36,4 +37,5 @@ def enrollment_store_product(store_id, product_name, picture_url):
         }
 
     except SQLAlchemyError:
+        session.rollback()
         return abort(500, "database_error")

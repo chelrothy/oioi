@@ -47,4 +47,5 @@ def store_detail(store_id):
             return abort(404, "not found")
 
     except SQLAlchemyError:
+        session.rollback()
         return abort(500, "database error")

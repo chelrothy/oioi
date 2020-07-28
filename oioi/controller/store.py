@@ -16,30 +16,28 @@ def store_detail(store_id):
         if store:
             store_reviews = session.query(StoreReview).filter(StoreReview.store_id == store_id).all()
             products = session.query(Product).filter(Product.store_id == store_id).all()
-            product_reviews = session.query(ProductReview).filter(ProductReview.product_id == product.id).all()
 
             return {
                 "id": store.id,
                 "ranking": store.ranking,
                 "name": store.name,
                 "description": store.description,
-                "score": store.score,
-                "average_price": store.average_score,
+                "average_score": store.average_score,
+                "average_price": store.average_price,
                 "picture": store.picture,
                 "store_review": [{
                     "content": store_review.content,
                     "score": store_review.score,
-                    "datetime": str(store_review.datetime),
-                    "reviewer": store_review.reviewer
+                    "datetime": str(store_review.datetime)
                 }for store_review in store_reviews],
                 "products": [{
+                    "product_id": product.id,
                     "name": product.name,
                     "picture": product.picture,
                     "reviews": [{
                         "content": review.content,
                         "score": review.score,
-                        "datetime": str(review.datetime),
-                        "reviewer": review.reviewer,
+                        "datetime": str(review.datetime)
                     }for review in session.query(ProductReview).filter(ProductReview.product_id == product.id).all()]
                 }for product in products]
             }

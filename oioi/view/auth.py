@@ -6,13 +6,11 @@ from oioi.controller.auth import sign_up, login
 
 
 class SignUp(Resource):
-
-    check_json({
+    @check_json({
         "id": str,
         "password": str,
         "name": str
     })
-
     def post(self):
         id = request.json['id']
         password = request.json['password']
@@ -23,11 +21,10 @@ class SignUp(Resource):
 
 class Login(Resource):
 
-    check_json({
+    @check_json({
         "id": str,
         "password": str
     })
-
     def post(self):
         id = request.json['id']
         password = request.json['password']

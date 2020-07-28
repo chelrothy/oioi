@@ -20,7 +20,7 @@ from oioi.view.review import StoreReview
 api_basic.add_resource(StoreReview, "/<store_id>/review")
 
 from oioi.view.review import ProductReview
-api_basic.add_resource(ProductReview, "/<store_id>/review/product")
+api_basic.add_resource(ProductReview, "/<store_id>/review/<product_id>")
 
 from oioi.view.enrollment import EnrollmentStore
 api_basic.add_resource(EnrollmentStore, "/store")

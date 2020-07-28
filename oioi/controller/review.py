@@ -1,3 +1,4 @@
+import datetime
 from flask import abort
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -5,6 +6,7 @@ from oioi.model import session
 from oioi.model.store import Store
 from oioi.model.store_review import StoreReview
 from oioi.model.product_review import ProductReview
+from oioi.controller import average_score_calculation
 
 
 def create_store_review(store_id, content, score, reviewer):
@@ -13,10 +15,13 @@ def create_store_review(store_id, content, score, reviewer):
         store = session.query(Store).filter(Store.id == store_id).first()
 
         if store:
-            add_review = StoreReview(store_id=store_id, content=content, score=score, reviewer=reviewer)
+            add_review = StoreReview(store_id=store_id, content=content, score=score, reviewer=reviewer,
+                                     datetime=datetime.datetime.now())
 
             session.add(add_review)
             session.commit()
+
+            average_score_calculation(store_id)
 
             return {
                 "message": "success for create store review"
@@ -29,25 +34,19 @@ def create_store_review(store_id, content, score, reviewer):
         return abort(500, "database error")
 
 
-def create_product_review(store_id, name, content, score, reviewer):
+def create_product_review(product_id, content, score, reviewer):
 
     try:
-        store = session.query(Store).filter(Store.id == store_id).first()
 
-        if store:
+        add_review = ProductReview(product_id=product_id, content=content,
+                                   score=score, reviewer=reviewer, datetime=datetime.datetime.now())
 
-            add_review = ProductReview(store_id=store_id, name=name, content=content,
-                                       score=score, reviewer=reviewer)
+        session.add(add_review)
+        session.commit()
 
-            session.add(add_review)
-            session.commit()
-
-            return {
-                "message": "success for created product reveiw"
-            }, 201
-
-        else:
-            return abort(404, "not found store")
+        return {
+            "message": "success for created product review"
+        }, 201
 
     except SQLAlchemyError:
         return abort(500, "database error")

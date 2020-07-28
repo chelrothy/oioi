@@ -11,7 +11,7 @@ class StoreReview(Resource):
     @jwt_required
     @check_json({
         "content": str,
-        "score": str
+        "score": int
     })
     def post(self, store_id):
         content = request.json['content']
@@ -24,10 +24,9 @@ class StoreReview(Resource):
 class ProductReview(Resource):
 
     @jwt_required
-    def post(self, store_id):
-        name = request.json['name']
+    def post(self, store_id, product_id):
         content = request.json['content']
         score = request.json['score']
         reviewer = get_jwt_identity()
 
-        return create_product_review(store_id, name, content, score, reviewer)
+        return create_product_review(product_id, content, score, reviewer)

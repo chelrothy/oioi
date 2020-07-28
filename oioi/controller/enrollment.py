@@ -9,8 +9,8 @@ from oioi.model.product import Product
 def enrollment_store(store_name, description, score, average_price, picture_url):
 
     try:
-        add_store = Store(store_name=store_name, description=description, score=score, average_price=average_price,
-                          picture=picture_url)
+        add_store = Store(name=store_name, description=description, average_price=average_price,
+                          picture=picture_url, average_score=score)
 
         session.add(add_store)
         session.commit()

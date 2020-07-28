@@ -1,9 +1,9 @@
+import os
 from flask import abort
 from sqlalchemy.exc import SQLAlchemyError
 
 from oioi.model import session
 from oioi.model.store import Store
-from oioi import BASE_URL
 
 
 def ranking(search):
@@ -24,7 +24,7 @@ def ranking(search):
                 "description": store.description,
                 "average_score": store.average_score,
                 "average_price": store.average_price,
-                "picture": f"{BASE_URL}{store.picture}"
+                "picture": f"{os.getenv('BASE_URL')}{store.picture}"
             }for index, store in enumerate(stores)]
 
             return response

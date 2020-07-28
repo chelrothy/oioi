@@ -1,3 +1,4 @@
+import os
 from flask import abort
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -6,7 +7,6 @@ from oioi.model.store import Store
 from oioi.model.store_review import StoreReview
 from oioi.model.product_review import ProductReview
 from oioi.model.product import Product
-from oioi import BASE_URL
 
 
 def store_detail(store_id):
@@ -25,7 +25,7 @@ def store_detail(store_id):
                 "description": store.description,
                 "average_score": store.average_score,
                 "average_price": store.average_price,
-                "picture": f"{BASE_URL}{store.picture}",
+                "picture": f"{os.getenv('BASE_URL')}{store.picture}",
                 "store_review": [{
                     "content": store_review.content,
                     "score": store_review.score,
@@ -34,7 +34,7 @@ def store_detail(store_id):
                 "products": [{
                     "product_id": product.id,
                     "name": product.name,
-                    "picture": f"{BASE_URL}{product.picture}",
+                    "picture": f"{os.getenv('BASE_URL')}{product.picture}",
                     "reviews": [{
                         "content": review.content,
                         "score": review.score,

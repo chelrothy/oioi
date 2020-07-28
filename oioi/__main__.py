@@ -1,7 +1,7 @@
 import os
 
-from model import Base, engine
-from app import create_app
+from oioi.model import Base, engine
+from oioi.app import create_app
 
 Base.metadata.create_all(engine)
 

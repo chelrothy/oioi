@@ -14,9 +14,9 @@ class EnrollmentStore(Resource):
         score = request.form['score']
         average_price = request.form['average_price']
         picture = request.files['picture']
-        picture.save(f"static/store_image/{picture.filename}")
+        picture.save("static/store_image/" + picture.filename)
 
-        picture_url = f"static/store_image/{picture.filename}"
+        picture_url = "static/store_image/" + picture.filename
 
         return enrollment_store(store_name, description, score, average_price, picture_url)
 
@@ -27,8 +27,8 @@ class EnrollmentStoreProduct(Resource):
     def post(self, store_id):
         product_name = request.form['product_name']
         picture = request.files['picture']
-        picture.save(f"static/product_image/{picture.filename}")
+        picture.save("static/product_image/" + picture.filename)
 
-        picture_url = f"static/product_image/{picture.filename}"
+        picture_url = "static/product_image/" + picture.filename
 
         return enrollment_store_product(store_id, product_name, picture_url)

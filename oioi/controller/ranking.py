@@ -24,7 +24,7 @@ def ranking(search):
                 "description": store.description,
                 "average_score": store.average_score,
                 "average_price": store.average_price,
-                "picture": f"{os.getenv('BASE_URL')}{store.picture}"
+                "picture": os.getenv('BASE_URL') + store.picture
             }for index, store in enumerate(stores)]
 
             return response

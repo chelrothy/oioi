@@ -9,7 +9,7 @@ from model.store import Store
 def ranking(search):
 
     try:
-        stores = session.query(Store).filter(Store.name.like(f'%{search}%')).order_by(Store.average_score).all()
+        stores = session.query(Store).filter(Store.name.like('%' + search + '%')).order_by(Store.average_score).all()
 
         for index, store in enumerate(stores):
             store_info = session.query(Store).filter(Store.id == store.id).first()

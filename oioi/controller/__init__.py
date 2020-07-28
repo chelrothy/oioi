@@ -1,9 +1,9 @@
 from flask import abort
 from sqlalchemy.exc import SQLAlchemyError
 
-from oioi.model import session
-from oioi.model.store import Store
-from oioi.model.store_review import StoreReview
+from model import session
+from model.store import Store
+from model.store_review import StoreReview
 
 
 def average_score_calculation(store_id):

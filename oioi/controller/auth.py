@@ -2,8 +2,8 @@ from flask import abort
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token
 
-from oioi.model import session
-from oioi.model.user import User
+from model import session
+from model.user import User
 
 
 def sign_up(id, password, name):

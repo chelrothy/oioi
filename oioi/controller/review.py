@@ -2,11 +2,11 @@ import datetime
 from flask import abort
 from sqlalchemy.exc import SQLAlchemyError
 
-from oioi.model import session
-from oioi.model.store import Store
-from oioi.model.store_review import StoreReview
-from oioi.model.product_review import ProductReview
-from oioi.controller import average_score_calculation
+from model import session
+from model.store import Store
+from model.store_review import StoreReview
+from model.product_review import ProductReview
+from controller import average_score_calculation
 
 
 def create_store_review(store_id, content, score, reviewer):

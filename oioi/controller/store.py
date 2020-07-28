@@ -2,11 +2,11 @@ import os
 from flask import abort
 from sqlalchemy.exc import SQLAlchemyError
 
-from oioi.model import session
-from oioi.model.store import Store
-from oioi.model.store_review import StoreReview
-from oioi.model.product_review import ProductReview
-from oioi.model.product import Product
+from model import session
+from model.store import Store
+from model.store_review import StoreReview
+from model.product_review import ProductReview
+from model.product import Product
 
 
 def store_detail(store_id):

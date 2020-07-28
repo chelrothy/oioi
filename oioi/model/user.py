@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String
 
-from oioi.model import Base
+from model import Base
 
 
 class User(Base):

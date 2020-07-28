@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, Integer, ForeignKey, DATETIME
 
-from oioi.model import Base
+from model import Base
 
 
 class StoreReview(Base):

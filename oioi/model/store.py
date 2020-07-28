@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, Integer
 
-from oioi.model import Base
+from model import Base
 
 
 class Store(Base):

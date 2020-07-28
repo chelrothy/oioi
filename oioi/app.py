@@ -4,7 +4,7 @@ from flask import Flask
 from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 
-from oioi.router import bp_basic
+from router import bp_basic
 
 
 def create_app():

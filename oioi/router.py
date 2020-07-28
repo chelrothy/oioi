@@ -4,26 +4,26 @@ from flask_restful import Api
 bp_basic = Blueprint("auth", __name__, url_prefix="/api/v1")
 api_basic = Api(bp_basic)
 
-from oioi.view.auth import SignUp
+from view.auth import SignUp
 api_basic.add_resource(SignUp, "/signup")
 
-from oioi.view.auth import Login
+from view.auth import Login
 api_basic.add_resource(Login, "/login")
 
-from oioi.view.ranking import Ranking
+from view.ranking import Ranking
 api_basic.add_resource(Ranking, "/store/ranking")
 
-from oioi.view.store import Store
+from view.store import Store
 api_basic.add_resource(Store, "/<store_id>")
 
-from oioi.view.review import StoreReview
+from view.review import StoreReview
 api_basic.add_resource(StoreReview, "/<store_id>/review")
 
-from oioi.view.review import ProductReview
+from view.review import ProductReview
 api_basic.add_resource(ProductReview, "/<store_id>/review/<product_id>")
 
-from oioi.view.enrollment import EnrollmentStore
+from view.enrollment import EnrollmentStore
 api_basic.add_resource(EnrollmentStore, "/store")
 
-from oioi.view.enrollment import EnrollmentStoreProduct
+from view.enrollment import EnrollmentStoreProduct
 api_basic.add_resource(EnrollmentStoreProduct, "/<store_id>/product")

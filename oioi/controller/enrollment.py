@@ -1,9 +1,9 @@
 from flask import abort
 from sqlalchemy.exc import SQLAlchemyError
 
-from oioi.model import session
-from oioi.model.store import Store
-from oioi.model.product import Product
+from model import session
+from model.store import Store
+from model.product import Product
 
 
 def enrollment_store(store_name, description, score, average_price, picture_url):

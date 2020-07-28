@@ -3,6 +3,7 @@ from sqlalchemy.exc import SQLAlchemyError
 
 from oioi.model import session
 from oioi.model.store import Store
+from oioi import BASE_URL
 
 
 def ranking(search):
@@ -23,7 +24,7 @@ def ranking(search):
                 "description": store.description,
                 "average_score": store.average_score,
                 "average_price": store.average_price,
-                "picture": store.picture
+                "picture": f"{BASE_URL}{store.picture}"
             }for index, store in enumerate(stores)]
 
             return response

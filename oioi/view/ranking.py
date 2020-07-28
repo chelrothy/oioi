@@ -1,7 +1,7 @@
 from flask import request
 from flask_restful import Resource
 
-from oioi.controller.ranking import ranking
+from controller.ranking import ranking
 
 
 class Ranking(Resource):

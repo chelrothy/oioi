@@ -1,8 +1,8 @@
 from flask import request
 from flask_restful import Resource
 
-from oioi.view import check_json
-from oioi.controller.auth import sign_up, login
+from view import check_json
+from controller.auth import sign_up, login
 
 
 class SignUp(Resource):

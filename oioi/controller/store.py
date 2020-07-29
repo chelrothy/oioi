@@ -7,6 +7,7 @@ from model.store import Store
 from model.store_review import StoreReview
 from model.product_review import ProductReview
 from model.product import Product
+from controller import product_average_score_calculation
 
 
 def store_detail(store_id):
@@ -35,6 +36,7 @@ def store_detail(store_id):
                     "product_id": product.id,
                     "name": product.name,
                     "picture": os.getenv('BASE_URL') + product.picture,
+                    "average_score": product_average_score_calculation(product.id),
                     "reviews": [{
                         "content": review.content,
                         "score": review.score,
